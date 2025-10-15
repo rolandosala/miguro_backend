@@ -7,11 +7,10 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-/* const serviceAccount = JSON.parse(process.env.SERVICE_KEY); */
 const serviceAccount = JSON.parse(
-    await import('fs/promises')
-        .then(fs => fs.readFile(process.env.SERVICE_KEY, 'utf8'))
+  fs.readFileSync("/etc/secrets/serviceAccountKey.json", "utf-8")
 );
+
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
