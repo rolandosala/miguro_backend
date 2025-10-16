@@ -20,7 +20,7 @@ const db = admin.firestore();
 const app = express();
 app.use(express.json());
 app.use(cors({
-  origin: "https://miguro-backend.onrender.com",   // allow your Vue app
+  origin: "https://miguro-v2.vercel.app",   // allow your Vue app
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
