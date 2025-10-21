@@ -32,7 +32,7 @@ const allowedOrigins =
 app.use(cors({
   origin: allowedOrigins,   // allow your Vue app
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"]
+  allowedHeaders: ["Content-Type", "Authorization", "Cache-Control"]
 }));
 
 app.post('/uploadNewKanjiCharacter', async (req, res) => {
@@ -63,7 +63,7 @@ app.get("/fetchKanjiList", async (req, res) => {
 app.get("/searchDictionary", async (req, res) => {
   const { query } = req.query;
   try {
-    const url = `https://jisho.org/api/v1/search/words?keyword=${encodeURIComponent(query)}`;
+    const url = `https://jlpt-vocab-api.vercel.app/api/words?word=${query}`;
     const { data } = await axios.get(url, {
       headers: {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
